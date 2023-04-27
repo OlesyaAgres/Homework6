@@ -3,70 +3,62 @@
 
 // Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 
+string ReadDataStr(string msg)
+{
+    Console.WriteLine(msg);
+    return Console.ReadLine() ?? "0";
+}
 
-// Console.Write("Введите числа через запятую: ");
-// int[] numbers = StringToNum(Console.ReadLine());
-// PrintArray(numbers);
-// int sum = 0;
-// for (int i = 0; i < numbers.Length; i++)
-// {
-//     if (numbers[i] > 0)
-//     {
-//         sum++;
-//     }
-// }
-// Console.WriteLine();
-// Console.WriteLine($"количество значений больше 0 = {sum}");
-// 
-// 
-// int[] StringToNum(string input)
-// {
-//     int count = 1;
-//     for (int i = 0; i < input.Length; i++)
-//     {
-//         if (input[i] == ',')
-//         {
-//             count++;
-//         }
-//     }
-// 
-//     int[] numbers = new int [count];
-//     int index = 0;
-// 
-//     for (int i = 0; i < input.Length; i++)
-//     {
-//         string temp = "";
-// 
-//         while (input [i] != ',')
-//         {
-//         if(i != input.Length - 1)
-//         {
-//             temp += input [i].ToString();
-//             i++;
-//         }
-//         else
-//         {
-//             temp += input [i].ToString();
-//             break;
-//         }
-//         }
-//         numbers[index] = Convert.ToInt32(temp);
-//         index++;
-//     }
-//     return numbers;
-// }
-// 
-// 
-// void PrintArray(int[] array)
-// {
-//     Console.Write("[ ");
-//     for (int i = 0; i < array.Length; i++)
-//     {
-//         Console.Write(array[i] + " ");
-//     }
-//     Console.Write("]");
-// }
+int CountPositivNumber(string str)
+{
+    int count = 0;
+    string strWoSp = str.Replace(" ", "");
+
+    string[] strArr = strWoSp.Split(",");
+
+    int[] intArr = new int[strArr.Length];
+
+    for (int i = 0; i < intArr.Length; i++) intArr[i] = int.Parse(strArr[i]);
+
+    for (int i = 0; i < intArr.Length; i++) if (intArr[i] > 0) count++;
+
+    return count;
+}
+string sequenceNumbers = ReadDataStr("Введите последовательность чисел: ");
+int countPosNum = CountPositivNumber(sequenceNumbers);
+Console.WriteLine("Количество положительных чисел равно: " + countPosNum);
+
 
 
 //Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями 
 // y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+
+// double ReadData(string msg)
+// {
+//     Console.WriteLine(msg);
+//     return Convert.ToDouble(Console.ReadLine() ?? "0");
+// }
+// 
+// double xVolume(double b1, double k1, double b2, double k2)
+// {
+//     double xVol = (b2 - b1) / (k1 - k2);
+//     //double x = (b2 - b1) / (k1 - k2);
+//     return xVol;
+// }
+
+// double yVolume(double b1, double k1, double x)
+// {
+//     double y = k1 * x + b1;
+//     return y;
+// }
+
+// double b1 = ReadData("Введите значение b1: ");
+// double k1 = ReadData("Введите значение k1: ");
+// double b2 = ReadData("Введите значение b2: ");
+// double k2 = ReadData("Введите значение k2: ");
+
+// double x = xVolume(b1, k1, b2, k2);
+// double y = yVolume(b1, k1, x);
+
+// Console.WriteLine("Значение Х = " + x);
+// Console.WriteLine("Значение Y = " + y);
